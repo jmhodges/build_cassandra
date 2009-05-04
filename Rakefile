@@ -15,11 +15,27 @@ def jvm_sh(command)
   sh "JAVA_HOME=#{BSDPORT_SDK} PATH=#{BSDPORT_SDK}/bin:$PATH " + command
 end
 
-task :default => :compile
+task :default => :start
+
+task :start do
+  cd here('cassandra')
+  jvm_sh 'bin/cassandra -f'
+end
+
+task :cli do
+  cd here('cassandra')
+  jvm_sh 'bin/cassandra-cli'
+end
 
 task :compile do
   cd here('cassandra')
   jvm_sh("ant")
+  mkdir_p(here('data'))
+  Dir['conf/*'].each do |fn|
+    fr = File.open(fn).read.split("\n")
+    fr.each{|l| l.gsub!(%r{/var/cassandra}, here('data')) }
+    File.open(fn, 'w').write(fr.join("\n"))
+  end
 end
 
 task :clean do
@@ -28,6 +44,10 @@ task :clean do
 end
 
 task :rebuild => [:clean, :compile]
+
+task :clobber => :clean do
+  rm_rf here('data/*')
+end
 
 task :jvm do
   jvm_sh "java -version"
