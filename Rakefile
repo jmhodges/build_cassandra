@@ -9,10 +9,10 @@ def here(filename)
   File.expand_path(File.dirname(__FILE__) + '/' + filename)
 end
 
-BSDPORT_SDK = here 'bsd-port/build/bsd-i586/j2sdk-image/'
+JAVA17_SDK = here 'bsd-port/build/bsd-i586/j2sdk-image/'
 
 def jvm_sh(command)
-  sh "JAVA_HOME=#{BSDPORT_SDK} PATH=#{BSDPORT_SDK}/bin:$PATH " + command
+  sh "JAVA_HOME=#{JAVA17_SDK} PATH=#{JAVA17_SDK}/bin:$PATH " + command
 end
 
 task :default => :start
