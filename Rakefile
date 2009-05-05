@@ -78,7 +78,7 @@ task :soylatte do
   if I_AM_OKAY_WITH_SOYLATTE_LICENSE
     pass = "jrl:I am a Licensee in good standing@"
   else
-    puts "YOU MUST HIT THAT LICENSE. I AM NOT DOING ANYTHING ILLEGAL ON YOUR BEHALF"
+    puts "YOU didn't change I_AM_OKAY_WITH_SOYLATTE_LICENSE in the Rakefile so now I'm exiting because rargh!"
     exit(1)
   end
   unless File.exist? soy
