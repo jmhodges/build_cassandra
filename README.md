@@ -26,11 +26,11 @@ gcc/make/ant stuff.
 
 Checkout the source code for Cassandra as a subdirectory named
 `cassandra` to the directory this file is in. Take a look at the
-Rakefile here. You'll want to go ahead and uncomment the line that
-sets the soylatte tarball url and remove the two lines below it. Of
-course, you should get make sure you're okay with the license
-requirement for that tarball before running this. See the [soylatte
-page](http://landonf.bikemonkey.org/static/soylatte/#get) for info.
+Rakefile here. You'll need to change the line
+`I_AM_OKAY_WITH_SOYLATTE_LICENSE = false` line to
+`I_AM_OKAY_WITH_SOYLATTE_LICENSE = true` if you are okay with the
+license described at the [soylatte
+site](http://landonf.bikemonkey.org/static/soylatte/#get).
 
 After that, run
     

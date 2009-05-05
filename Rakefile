@@ -1,6 +1,12 @@
+ # edit this to true if you are okay with the soylatte license. go
+ # read the license
+ # wankers. http://landonf.bikemonkey.org/static/soylatte/#get
+I_AM_OKAY_WITH_SOYLATTE_LICENSE = false
+
 require 'rubygems'
 require 'rake'
 require 'uri'
+
 
 def here(filename)
   File.expand_path(File.dirname(__FILE__) + '/' + filename)
@@ -12,7 +18,10 @@ def jvm_sh(command)
   sh "JAVA_HOME=#{JAVA17_SDK} PATH=#{JAVA17_SDK}/bin:$PATH " + command
 end
 
-task :default => :start
+task :default do
+  puts "Run 'rake setup compile' if this is your first time with this app. If you haven't edited the Rakefile to be okay with the license agreement, do so now. Just change the line 'I_AM_OKAY_WITH_SOYLATTE_LICENSE = false' to 'I_AM_OKAY_WITH_SOYLATTE_LICENSE = true'"
+  puts "Run 'rake start' if you just want to boot Cassandra"
+end
 
 task :start do
   cd here('cassandra')
@@ -60,9 +69,12 @@ end
 task :soylatte do
   soy = 'soylatte16-i386-1.0.3'
   tarball =  "#{soy}.tar.bz2"
-  # pass = "jrl:I am a Licensee in good standing@"
-  puts "YOU MUST HIT THAT LICENSE. I AM NOT DOING ANYTHING ILLEGAL ON YOUR BEHALF"
-  exit(1)
+  if I_AM_OKAY_WITH_SOYLATTE_LICENSE
+    pass = "jrl:I am a Licensee in good standing@"
+  else
+    puts "YOU MUST HIT THAT LICENSE. I AM NOT DOING ANYTHING ILLEGAL ON YOUR BEHALF"
+    exit(1)
+  end
   unless File.exist? soy
     sh "curl 'http://#{pass}hg.bikemonkey.org/archive/javasrc_1_6_jrl_darwin/#{tarball}' -o #{tarball}"
     sh "tar xjvf #{tarball}"
