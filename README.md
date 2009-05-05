@@ -25,8 +25,9 @@ gcc/make/ant stuff.
 ### NOTE:
 
 This program is awesome because it handles the `JAVA_HOME` and `PATH`
- stuff for building without doing so permanently. You won't have Java
- 7 all up in your business.
+stuff for building Cassandra without adding Java 7 to them
+permanently. You won't have Java 7 all up in your business after you
+run this.
 
 ## Building Cassandra
 
