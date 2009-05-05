@@ -24,8 +24,8 @@ gcc/make/ant stuff.
 
 ## Building Cassandra
 
-Checkout the source code for Cassandra to the directory this file has
-been checked out it and name it "cassandra". Take a look at the
+Checkout the source code for Cassandra as a subdirectory named
+`cassandra` to the directory this file is in. Take a look at the
 Rakefile here. You'll want to go ahead and uncomment the line that
 sets the soylatte tarball url and remove the two lines below it. Of
 course, you should get make sure you're okay with the license
