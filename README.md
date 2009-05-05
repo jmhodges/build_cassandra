@@ -85,9 +85,13 @@ Rakefile.
 That runs the command set in doit with the `JAVA_HOME` and `PATH` set
 appropriately.
 
+    rake clean
+
+This just runs `ant clean` in the Cassandra codebase.
+
     rake clobber
 
-This cleans out the Cassandra build, and removes the data stuff under
+This cleans out the Cassandra build via `ant clean`, and removes the data stuff under
 the `data` directory.
 
     rake rebuild
