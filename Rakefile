@@ -60,10 +60,16 @@ task :jvm do
   jvm_sh ENV['doit'] if ENV['doit']
 end
 
-task :setup => [:bsdport, :icedtea, :soylatte] do
+task :setup => [:cassandra_source, :bsdport, :icedtea, :soylatte] do
   cd here('bsd-port')
   sh "make clean"
   sh "sh build.sh"
+end
+
+task :cassandra_source => :svn do
+  unless File.exist?(here('cassandra'))
+    sh('svn co https://svn.eu.apache.org/repos/asf/incubator/cassandra/trunk cassandra')
+  end
 end
 
 task :soylatte do
@@ -117,7 +123,7 @@ end
 
 task :merc do
   sh('port installed mercurial | grep active') do |ok, res|
-    if ! ok
+    if ! ok || sh('which hg')
       sudo 'port install mercurial +bash_completion'
     end
   end
@@ -141,5 +147,15 @@ task :merc do
       end
     end
     File.open(hgrc_path, 'w').write(new_hgrc.join("\n"))
+  end
+end
+require 'ruby-debug'
+debugger
+
+task :svn do
+  sh('port installed subversion | grep active') do |ok, res|
+    if ! ok || sh('which svn')
+      sudo 'port install subversion +bash_completion'
+    end
   end
 end
