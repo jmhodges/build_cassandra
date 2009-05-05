@@ -28,8 +28,8 @@ Checkout the source code for Cassandra to the directory this file has
 been checked out it and name it "cassandra". Take a look at the
 Rakefile here. You'll want to go ahead and uncomment the line that
 sets the soylatte tarball url and remove the two lines below it. Of
-course, you should get yourself approved by the license requirement at
-the other then of that url. See the [soylatte
+course, you should get make sure you're okay with the license
+requirement for that tarball before running this. See the [soylatte
 page](http://landonf.bikemonkey.org/static/soylatte/#get) for info.
 
 After that, run
