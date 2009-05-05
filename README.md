@@ -11,8 +11,8 @@ the Facebook guys are like "oh, hell, no". In any case, not using Java
 
 Except for building Java 7 on OS X. That's a total bitch.
 
-Oh, and running it without having to use a very beta version of
-Java. That's a total bitch, too.
+Oh, and running it without having to use a very beta version of Java
+for everything on your machine. That's a total bitch, too.
 
 But, you know, we're software developers. We write Solutions For The
 Enterprise<sup>TM</sup>, and Solutions For This Horrible
