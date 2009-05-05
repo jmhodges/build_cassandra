@@ -87,8 +87,8 @@ task :soylatte do
 end
 
 task :icedtea do
-  icedtea = 'jdk-7-icedtea-plugs-1.6'
-  tarball = "#{icedtea}.tar.gz"
+  icedtea = 'jdk-7-icedtea-plugs'
+  tarball = "#{icedtea}-1.6.tar.gz"
   unless File.exist?(icedtea)
     sh "curl http://landonf.bikemonkey.org/static/soylatte/#{tarball} -o #{tarball}"
     sh "tar xzvf #{tarball}"
@@ -97,7 +97,17 @@ end
 
 task :bsdport => :merc do
   unless File.exist? here('bsd-port')
-    sh 'hg fclone http://hg.openjdk.java.net/bsd-port/bsd-port'
+    begin
+      sh 'hg fclone http://hg.openjdk.java.net/bsd-port/bsd-port'
+    rescue
+      puts(<<EOS
+OKAY, so you're seeing this because mercurial's fclone extension wasn't installed before you ran 'rake setup'. Because mercurial sucks, it doesn't see it when you're in the same process space.
+
+HOW TO FIX THIS: Run 'rake setup' again. All will be fine. (I know, this sucks.)
+EOS
+           )
+      exit
+    end
   end
 
   File.open(here('bsd-port/build.sh'), 'w') do |f|
