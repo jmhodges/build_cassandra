@@ -22,8 +22,9 @@ Friggin' Do This Goddamn It Is Annoying. So, I wrote this thing.
 It requires nothing more than Ruby, Rake, and MacPorts plus the usual
 gcc/make/ant stuff.
 
-### NOTE: This does not have Java 7 infecting your machine! It doesn't
-### change JAVA_HOME or PATH.
+*NOTE*: This program is awesome because it handles the `JAVA_HOME` and
+ `PATH` stuff for building without doing so permanently. You won't
+ have Java 7 all up in your business.
 
 ## Building Cassandra
 
