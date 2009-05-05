@@ -1,6 +1,6 @@
 # Building and Running Cassandra on Mac OS X
 
-So, [Cassandra](http://incubator.apache.org/projects/cassandra.html)
+So, [Cassandra](http://incubator.apache.org/cassandra/)
 is pretty awesome. And Cassandra depends on Java 7. Sort of.
 
 What's really going on is that you can use Cassandra on Java 6, but
