@@ -19,8 +19,8 @@ def jvm_sh(command)
 end
 
 task :default do
-  puts "Run 'rake setup compile' if this is your first time with this app. If you haven't edited the Rakefile to be okay with the license agreement, do so now. Just change the line 'I_AM_OKAY_WITH_SOYLATTE_LICENSE = false' to 'I_AM_OKAY_WITH_SOYLATTE_LICENSE = true'"
-  puts "Run 'rake start' if you just want to boot Cassandra"
+  puts "RUN 'rake setup compile' if this is your first time with this app.\n(If you haven't edited the Rakefile to be okay with the license agreement, do so now. Just change the line 'I_AM_OKAY_WITH_SOYLATTE_LICENSE = false' to 'I_AM_OKAY_WITH_SOYLATTE_LICENSE = true')"
+  puts "RUN 'rake start' if you just want to boot Cassandra"
 end
 
 task :start do
