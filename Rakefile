@@ -1,9 +1,6 @@
 require 'rubygems'
 require 'rake'
 require 'uri'
-# Why aren't we using buildr? Because we have to start up a JVM that
-# we don't necessarily want a jruby built against. Specifically, java
-# 1.7.
 
 def here(filename)
   File.expand_path(File.dirname(__FILE__) + '/' + filename)
