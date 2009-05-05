@@ -34,7 +34,7 @@ run this.
 Take a look at the Rakefile here. You'll need to change the line
 `I_AM_OKAY_WITH_SOYLATTE_LICENSE = false` line to
 `I_AM_OKAY_WITH_SOYLATTE_LICENSE = true` if you are okay with the
-license described at the [soylatte
+license described at the [SoyLatte
 site](http://landonf.bikemonkey.org/static/soylatte/#get).
 
 After that, run
