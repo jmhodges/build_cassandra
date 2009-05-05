@@ -123,7 +123,7 @@ end
 
 task :merc do
   sh('port installed mercurial | grep active') do |ok, res|
-    if ! ok || !(sh('which hg') rescue false)
+    if ! ok && !(sh('which hg') rescue false)
       sh 'sudo port install mercurial +bash_completion'
     end
   end
@@ -152,7 +152,7 @@ end
 
 task :svn do
   sh('port installed subversion | grep active') do |ok, res|
-    if ! ok || !(sh('which svn') rescue false)
+    if ! ok && !(sh('which svn') rescue false)
       sh 'sudo port install subversion +bash_completion'
     end
   end
