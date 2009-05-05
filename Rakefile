@@ -62,7 +62,6 @@ end
 
 task :setup => [:cassandra_source, :bsdport, :icedtea, :soylatte] do
   cd here('bsd-port')
-  sh "make clean"
   sh "sh build.sh"
 end
 
@@ -108,7 +107,7 @@ task :bsdport => :merc do
    unset CLASSPATH
    unset JAVA_HOME
    make \
-   ALT_BOOTDIR=#{SOY} \
+   ALT_BOOTDIR=#{here(SOY)} \
    ALT_BINARY_PLUGS_PATH=#{here('jdk-7-icedtea-plugs')} \
    ALT_FREETYPE_HEADERS_PATH=/usr/X11R6/include \
    ALT_FREETYPE_LIB_PATH=/usr/X11R6/lib \
