@@ -3,6 +3,13 @@
  # wankers. http://landonf.bikemonkey.org/static/soylatte/#get
 I_AM_OKAY_WITH_SOYLATTE_LICENSE = false
 
+if I_AM_OKAY_WITH_SOYLATTE_LICENSE
+  @pass = "jrl:I am a Licensee in good standing@"
+else
+  puts "YOU didn't change I_AM_OKAY_WITH_SOYLATTE_LICENSE in the Rakefile so now I'm exiting. Read the README!"
+  exit(1)
+end
+
 require 'rubygems'
 require 'rake'
 require 'uri'
@@ -40,7 +47,7 @@ task :compile do
   Dir['conf/*'].each do |fn|
     fr = File.open(fn).read.split("\n")
     fr.each{|l| l.gsub!(%r{/var/cassandra}, here('data')) }
-    File.open(fn, 'w').write(fr.join("\n"))
+    File.open(fn, 'w'){|f| f.write(fr.join("\n"))}
   end
 end
 
@@ -70,18 +77,14 @@ task :cassandra_source => :svn do
     sh('svn co https://svn.eu.apache.org/repos/asf/incubator/cassandra/trunk cassandra')
   end
 end
+
 SOY = 'soylatte16-i386-1.0.3'
 task :soylatte do
   soy = SOY
-  tarball =  "#{soy}.tar.bz2"
-  if I_AM_OKAY_WITH_SOYLATTE_LICENSE
-    pass = "jrl:I am a Licensee in good standing@"
-  else
-    puts "YOU didn't change I_AM_OKAY_WITH_SOYLATTE_LICENSE in the Rakefile so now I'm exiting because rargh!"
-    exit(1)
-  end
-  unless File.exist? soy
-    sh "curl 'http://#{pass}hg.bikemonkey.org/archive/javasrc_1_6_jrl_darwin/#{tarball}' -o #{tarball}"
+  tarball = "#{soy}.tar.bz2"
+
+  unless File.exist?(soy)
+    sh "curl 'http://#{@pass}hg.bikemonkey.org/archive/javasrc_1_6_jrl_darwin/#{tarball}' -o #{tarball}"
     sh "tar xjvf #{tarball}"
   end
 end
@@ -97,17 +100,7 @@ end
 
 task :bsdport => :merc do
   unless File.exist? here('bsd-port')
-    begin
-      sh 'hg fclone http://hg.openjdk.java.net/bsd-port/bsd-port'
-    rescue
-      puts(<<EOS
-OKAY, so you're seeing this because mercurial's fclone extension wasn't installed before you ran 'rake setup'. Because mercurial sucks, it doesn't see it when you're in the same process space.
-
-HOW TO FIX THIS: Run 'rake setup' again. All will be fine. (I know, this sucks.)
-EOS
-           )
-      exit
-    end
+    sh 'hg fclone http://hg.openjdk.java.net/bsd-port/bsd-port'
   end
 
   File.open(here('bsd-port/build.sh'), 'w') do |f|
