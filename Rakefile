@@ -1,6 +1,6 @@
- # edit this to true if you are okay with the soylatte license. go
- # read the license
- # wankers. http://landonf.bikemonkey.org/static/soylatte/#get
+# edit this to true if you are okay with the soylatte license. go
+# read the license, wankers.
+# http://landonf.bikemonkey.org/static/soylatte/#get
 I_AM_OKAY_WITH_SOYLATTE_LICENSE = false
 
 if I_AM_OKAY_WITH_SOYLATTE_LICENSE

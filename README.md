@@ -41,13 +41,14 @@ After that, run
     
     rake setup compile
 
-You'll have to type in your password to sudo to install mercurial via
-MacPorts but other than that, you're done. `setup` will build the Java
-1.7 stuff and `compile` will build Cassandra against that new
-Java.
+You'll have to type in your password to sudo to install Mercurial and
+Subversion via MacPorts (if you don't already have a `hg` and `svn`
+binary, respectively) but other than that, you're done.
 
-It'll even make a data directory here and edit the config files to use
-it as the log and data directory for Cassandra.
+`setup` will build the Java 1.7 stuff and `compile` will build
+Cassandra against that new Java. It'll even make a data directory here
+and edit the config files to use it as the log and data directory for
+Cassandra.
 
 No config, no hassle. Isn't that awesome?
 
