@@ -38,7 +38,7 @@ After that, run
 
 You'll have to type in your password to sudo to install mercurial via
 MacPorts but other than that, you're done. `setup` will build the Java
-1.7 stuff and `compile` will build Cassandra against it.
+1.7 stuff and `compile` will build Cassandra against that new Java.
 
 It'll even make a data directory here and edit the config files to use
 it as the log and data directory for Cassandra.
