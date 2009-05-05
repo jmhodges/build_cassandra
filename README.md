@@ -82,7 +82,7 @@ Rakefile.
 
     rake jvm doit="some-java-command"
 
-That runs the command set in doit with the `JAVA_HOME` and `PATH` set
+That runs the command set to `doit` with the `JAVA_HOME` and `PATH` set
 appropriately.
 
     rake clean
