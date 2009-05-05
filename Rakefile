@@ -146,7 +146,7 @@ task :merc do
         new_hgrc << "hgrc.forest="+here('hgforest-crew')+"/forest.py\n"
       end
     end
-    File.open(hgrc_path, 'w').write(new_hgrc.join("\n"))
+    File.open(hgrc_path, 'w'){|f| f.write(new_hgrc.join("\n"))}
   end
 end
 
