@@ -71,9 +71,9 @@ task :cassandra_source => :svn do
     sh('svn co https://svn.eu.apache.org/repos/asf/incubator/cassandra/trunk cassandra')
   end
 end
-
+SOY = 'soylatte16-i386-1.0.3'
 task :soylatte do
-  soy = 'soylatte16-i386-1.0.3'
+  soy = SOY
   tarball =  "#{soy}.tar.bz2"
   if I_AM_OKAY_WITH_SOYLATTE_LICENSE
     pass = "jrl:I am a Licensee in good standing@"
@@ -108,7 +108,7 @@ task :bsdport => :merc do
    unset CLASSPATH
    unset JAVA_HOME
    make \
-   ALT_BOOTDIR=#{SOYLATTE} \
+   ALT_BOOTDIR=#{SOY} \
    ALT_BINARY_PLUGS_PATH=#{here('jdk-7-icedtea-plugs')} \
    ALT_FREETYPE_HEADERS_PATH=/usr/X11R6/include \
    ALT_FREETYPE_LIB_PATH=/usr/X11R6/lib \
