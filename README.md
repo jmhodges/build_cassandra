@@ -22,11 +22,12 @@ Friggin' Do This Goddamn It Is Annoying. So, I wrote this thing.
 It requires nothing more than Ruby, Rake, and MacPorts plus the usual
 gcc/make/ant stuff.
 
+### NOTE: This does not have Java 7 infecting your machine! It doesn't
+### change JAVA_HOME or PATH.
+
 ## Building Cassandra
 
-Checkout the source code for Cassandra as a subdirectory named
-`cassandra` to the directory this file is in. Take a look at the
-Rakefile here. You'll need to change the line
+Take a look at the Rakefile here. You'll need to change the line
 `I_AM_OKAY_WITH_SOYLATTE_LICENSE = false` line to
 `I_AM_OKAY_WITH_SOYLATTE_LICENSE = true` if you are okay with the
 license described at the [soylatte
