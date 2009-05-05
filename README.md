@@ -38,12 +38,21 @@ After that, run
 
 You'll have to type in your password to sudo to install mercurial via
 MacPorts but other than that, you're done. `setup` will build the Java
-1.7 stuff and `compile` will build Cassandra against that new Java.
+1.7 stuff and `compile` will build Cassandra against that new
+Java.
 
 It'll even make a data directory here and edit the config files to use
 it as the log and data directory for Cassandra.
 
 No config, no hassle. Isn't that awesome?
+
+(Oh, and by the way, it edits your `~/.hgrc` file to add the
+`forest-crew` extension because Mercurial a) sucks and b) blows and,
+apparently, people feel the need to require you to use horrible things
+that require bolted on libraries to work properly. Feel free to remove
+it or the whole file after you're done. The code does a good job of
+not screwing the pooch in your `.hgrc`, so don't fret about it
+changing.)
 
 ## Running Cassandra
 
