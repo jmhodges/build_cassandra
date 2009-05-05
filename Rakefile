@@ -149,8 +149,6 @@ task :merc do
     File.open(hgrc_path, 'w').write(new_hgrc.join("\n"))
   end
 end
-require 'ruby-debug'
-debugger
 
 task :svn do
   sh('port installed subversion | grep active') do |ok, res|
