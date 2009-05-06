@@ -64,10 +64,7 @@ task :jvm do
   jvm_sh ENV['doit'] if ENV['doit']
 end
 
-task :setup => [:icedtea, :soylatte, :bsdport, :cassandra_source] do
-  cd here('bsd-port')
-  sh "sh build.sh"
-end
+task :setup => [:icedtea, :soylatte, :bsdport, :cassandra_source]
 
 task :cassandra_source => :svn do
   unless File.exist?(here('cassandra'))
@@ -118,6 +115,8 @@ task :bsdport => :merc do
 EOS
             )
   end
+  cd here('bsd-port')
+  sh "sh build.sh"
 end
 
 task :merc do
