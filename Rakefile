@@ -155,3 +155,57 @@ task :svn do
     end
   end
 end
+
+# desc "Generate code from Cassandra's Thrift file (defaults to ruby)"
+task :gen => :thrift do
+  sane = {'ruby' => 'rb', 'python' => 'py', 'c++' => 'cpp', 'smalltalk' => 'st'}
+  gen = ENV['GEN'].split.map{|l| sane[l] || l}.join(" ")
+  mkdir_p here('generated')
+  sh "thrift  -o #{here('generated')} --gen #{gen} #{here('cassandra/interface/cassandra.thrift')}"
+  puts "See the 'generated' directory for the generated code"
+end
+
+task :thrift => [:boost, :flex, :bison] do
+  sh('which thrift') do |ok, res|
+    if ! ok
+      two_weeks_ago = Time.now - ( 86400 * 14 )
+      tarball = here('thrift.tgz')
+      if !File.exist?(here('thrift.tgz')) || File.ctime(here('thrift.tgz')) < two_weeks_ago
+        sh "curl 'http://gitweb.thrift-rpc.org/?p=thrift.git;a=snapshot;h=HEAD;sf=tgz' -o #{tarball}"
+      end
+      sh "tar xzf #{tarball}"
+
+      cd 'thrift' do
+        sh '/bin/bash ./bootstrap.sh'
+        # Using jvm_sh so we get the right javac for generation
+        jvm_sh "CONFIG_SHELL=/bin/bash ./configure"
+        sh 'make'
+        sh 'sudo make install'
+      end
+    end
+  end
+end
+
+task :boost do
+  sh('which bjam') do |ok, res|
+    if ! ok
+      sh('sudo port install boost')
+    end
+  end
+end
+
+task :flex do
+  sh('which flex') do |ok, res|
+    if ! ok
+      sh('sudo port install flex')
+    end
+  end
+end
+
+task :bison do
+  sh('which bison') do |ok, res|
+    if ! ok
+      sh('sudo port install bison')
+    end
+  end
+end
