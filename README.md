@@ -10,15 +10,6 @@ this Rakefile.
 It requires nothing more than Ruby, Rake, and MacPorts plus the usual
 gcc/make/ant stuff.
 
-(By they way, if you're having trouble with Cassandra on OS X
-building, it's because your `JAVA_HOME` and `PATH` are still pointing
-to Java 5, even if you have Java 6 Apple update installed on your
-box. Set
-`/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/` as
-your `JAVA_HOME` and add
-`/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/bin` to
-the front of your `PATH`.)
-
 ### NOTE:
 
 This program is awesome because it handles the `JAVA_HOME` and `PATH`
