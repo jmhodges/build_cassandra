@@ -52,13 +52,24 @@ Cassandra.
 
 No config, no hassle. Isn't that awesome?
 
-(Oh, and by the way, it edits your `~/.hgrc` file to add the
+(Oh, and by the way, this Rakefile edits your `~/.hgrc` file to add the
 `forest-crew` extension because Mercurial a) sucks and b) blows and,
 apparently, people feel the need to require you to use horrible things
 that require bolted on libraries to work properly. Feel free to remove
 it or the whole file after you're done. The code does a good job of
 not screwing the pooch in your `.hgrc`, so don't fret about it
 changing.)
+
+### Possible Problems
+
+If you're having a problem that's talking jive about `{standard
+input}:731:junk \`f' after expression` or similar, you need to update
+your version of Xcode to something much more recent.
+
+And if you're having a problem with iconv, you're probably running a
+MacPort version of it that is too new. Uninstall it, get the build of
+SoyLatte to work (i.e. `rake setup` finishes perfectly), then you can
+reinstall it.
 
 ## Running Cassandra
 
