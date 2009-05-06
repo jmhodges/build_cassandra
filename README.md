@@ -4,7 +4,7 @@ So, [Cassandra](http://incubator.apache.org/cassandra/) is pretty
 awesome. If you've found this, you've probably read that Cassandra
 requires Java 7 because of jars it depends on. This is no
 longer true. However, this tool still makes it damn easy to build
-Cassandra against Java 7 and if you want or need it I'd recommend using
+Cassandra against Java 7 and if you want or need it, I'd recommend using
 this Rakefile.
 
 It requires nothing more than Ruby, Rake, and MacPorts plus the usual
