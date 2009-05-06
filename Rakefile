@@ -1,19 +1,9 @@
-# edit this to true if you are okay with the soylatte license. go
-# read the license, wankers.
-# http://landonf.bikemonkey.org/static/soylatte/#get
-I_AM_OKAY_WITH_SOYLATTE_LICENSE = false
 
-if I_AM_OKAY_WITH_SOYLATTE_LICENSE
-  @pass = "jrl:I am a Licensee in good standing@"
-else
-  puts "YOU didn't change I_AM_OKAY_WITH_SOYLATTE_LICENSE in the Rakefile so now I'm exiting. Read the README!"
-  exit(1)
-end
+SOY = ENV['USE_64_BIT_JVM'] ? 'soylatte16-amd64-1.0.3' : 'soylatte16-i386-1.0.3'
 
 require 'rubygems'
 require 'rake'
 require 'uri'
-
 
 def here(filename)
   File.expand_path(File.dirname(__FILE__) + '/' + filename)
@@ -27,16 +17,19 @@ end
 
 task :default => :start
 
+desc "Start Cassandra server"
 task :start do
   cd here('cassandra')
   jvm_sh 'bin/cassandra -f'
 end
 
+desc "Start Cassandra command line interface"
 task :cli do
   cd here('cassandra')
   jvm_sh 'bin/cassandra-cli'
 end
 
+desc "Compile Cassandra"
 task :compile do
   cd here('cassandra')
   jvm_sh("ant")
@@ -48,6 +41,7 @@ task :compile do
   end
 end
 
+desc "Clean current Cassandra build"
 task :clean do
   cd here('cassandra')
   jvm_sh("ant clean")
@@ -59,26 +53,35 @@ task :clobber => :clean do
   rm_rf here('data/*')
 end
 
+desc "Pass the contents of the 'doit' ENV string to the Java 1.7 runtime"
 task :jvm do
   jvm_sh "java -version"
   jvm_sh ENV['doit'] if ENV['doit']
 end
 
+desc "Setup all dependencies"
 task :setup => [:icedtea, :soylatte, :bsdport, :cassandra_source]
 
+desc "Checkout or update the Cassandra source code"
 task :cassandra_source => :svn do
-  unless File.exist?(here('cassandra'))
+  if File.exist?(here('cassandra'))
+    cd here('cassandra')
+    sh('svn up')
+  else File.exist?(here('cassandra'))
     sh('svn co https://svn.eu.apache.org/repos/asf/incubator/cassandra/trunk cassandra')
   end
 end
 
-SOY = 'soylatte16-i386-1.0.3'
 task :soylatte do
-  soy = SOY
-  tarball = "#{soy}.tar.bz2"
-
-  unless File.exist?(soy)
-    sh "curl 'http://#{@pass}hg.bikemonkey.org/archive/javasrc_1_6_jrl_darwin/#{tarball}' -o #{tarball}"
+  tarball = "#{SOY}.tar.bz2"
+  unless File.exist?(SOY)
+    unless ENV['I_AGREE_WITH_THE_SOYLATTE_LICENSE']
+      puts "You must agree to the Soylatte license to continue. Go read it:"
+      puts "http://landonf.bikemonkey.org/static/soylatte/#get"
+      puts "Then pass I_AGREE_WITH_THE_SOYLATTE_LICENSE=1 as an environment variable."
+      exit(1)
+    end  
+    sh "curl 'http://jrl:I am a Licensee in good standing@hg.bikemonkey.org/archive/javasrc_1_6_jrl_darwin/#{tarball}' -o #{tarball}"
     sh "tar xjvf #{tarball}"
   end
 end
