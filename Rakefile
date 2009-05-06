@@ -64,14 +64,7 @@ desc "Checkout or update the Cassandra source code"
 task :cassandra_source => :svn do
   if File.exist?(here('cassandra'))
     scm_command = 'svn up'
-    if File.exist?(here('cassandra/.git'))
-      scm_command = 'git svn rebase'
-    end
-    cd here('cassandra') do
-      sh(scm_command)
-    end
-
-  else
+  elsif File.exist(here('cassandra/.svn'))
     sh("svn co https://svn.eu.apache.org/repos/asf/incubator/cassandra/trunk cassandra")
   end
 end
