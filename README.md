@@ -17,16 +17,16 @@ stuff for building and running Cassandra without adding Java 7 to them
 permanently. You won't have Java 7 all up in your business after you
 run this.
 
-
 ## Building Cassandra
 
-Take a look at the Rakefile here. You'll need to change the line
-`I_AM_OKAY_WITH_SOYLATTE_LICENSE = false` line to
-`I_AM_OKAY_WITH_SOYLATTE_LICENSE = true` if you are okay with the
-license described at the [SoyLatte
-site](http://landonf.bikemonkey.org/static/soylatte/#get).
+Before compiling you'll need to approve of the SoyLatte license. To
+agree to the license (described at the [SoyLatte
+site](http://landonf.bikemonkey.org/static/soylatte/#get)), you will
+need to put `I_AGREE_WITH_THE_SOYLATTE_LICENSE=1` at the beginning
+of the the command I've shown you.
 
-After that, run
+Since you've totally read these docs, you know you need to prepend
+that environment variable to this command:
     
     rake setup compile
 
@@ -41,24 +41,8 @@ Cassandra.
 
 No config, no hassle. Isn't that awesome?
 
-(Oh, and by the way, this Rakefile edits your `~/.hgrc` file to add the
-`forest-crew` extension because Mercurial a) sucks and b) blows and,
-apparently, people feel the need to require you to use horrible things
-that require bolted on libraries to work properly. Feel free to remove
-it or the whole file after you're done. The code does a good job of
-not screwing the pooch in your `.hgrc`, so don't fret about it
-changing.)
-
-### Possible Problems
-
-If you're having a problem that's talking jive about `{standard
-input}:731:junk \`f' after expression` or similar, you need to update
-your version of Xcode to something much more recent.
-
-And if you're having a problem with iconv, you're probably running a
-MacPort version of it that is too new. Uninstall it, get the build of
-SoyLatte to work (i.e. `rake setup` finishes perfectly), then you can
-reinstall it.
+If you have problems or want details, check out the Extra Notes on
+Building Section below.
 
 ## Running Cassandra
 
@@ -98,6 +82,30 @@ the `data` directory.
     rake rebuild
 
 This runs `clean` and `compile` for you.
+
+## Extra Notes On Building
+
+If you want the 64-bit AMD arch version of SoyLatte, add
+`USE_64_BIT_JVM=1` to the beginning of your `rake setup` call.
+
+Also, this Rakefile edits your `~/.hgrc` file to add the
+`forest-crew` extension because Mercurial a) sucks and b) blows and,
+apparently, people feel the need to require you to use horrible things
+that require bolted on libraries to work properly. Feel free to remove
+it or the whole file after you're done. The code does a good job of
+not screwing the pooch in your `.hgrc`, so don't fret about it
+changing.
+
+### Possible Problems
+
+If you're having a problem that's talking jive about `{standard
+input}:731:junk \`f' after expression` or similar, you need to update
+your version of Xcode to something much more recent.
+
+And if you're having a problem with iconv, you're probably running a
+MacPort version of it that is too new. Uninstall it, get the build of
+SoyLatte to work (i.e. `rake setup` finishes perfectly), then you can
+reinstall it.
 
 ## License
 
