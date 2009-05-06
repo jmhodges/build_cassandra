@@ -159,6 +159,11 @@ end
 # desc "Generate code from Cassandra's Thrift file (defaults to ruby)"
 task :gen => :thrift do
   sane = {'ruby' => 'rb', 'python' => 'py', 'c++' => 'cpp', 'smalltalk' => 'st'}
+  if ENV['GEN'].nil?
+    puts "\n\nYou forget to pass in some languages in GEN. As in, GEN='ruby py', etc."
+    exit(1)
+  end
+  
   gen = ENV['GEN'].split.map{|l| sane[l] || l}.join(" ")
   mkdir_p here('generated')
   sh "thrift  -o #{here('generated')} --gen #{gen} #{here('cassandra/interface/cassandra.thrift')}"
