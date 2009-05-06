@@ -1,4 +1,3 @@
-
 SOY = ENV['USE_64_BIT_JVM'] ? 'soylatte16-amd64-1.0.3' : 'soylatte16-i386-1.0.3'
 
 require 'rubygems'
@@ -55,7 +54,6 @@ end
 
 desc "Pass the contents of the 'doit' ENV string to the Java 1.7 runtime"
 task :jvm do
-  jvm_sh "java -version"
   jvm_sh ENV['doit'] if ENV['doit']
 end
 
