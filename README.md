@@ -1,26 +1,23 @@
 # Building and Running Cassandra on Mac OS X
 
-So, [Cassandra](http://incubator.apache.org/cassandra/)
-is pretty awesome. And Cassandra depends on Java 7. Sort of.
-
-What's really going on is that you can use Cassandra on Java 6, but
-the jar files included are often built by the devs against 1.7. Also,
-apparently on quad core machines, Java 6 will spontaneously crash, so
-the Facebook guys are like "oh, hell, no". In any case, not using Java
-7 for Cassandra is harder than using it.
-
-Except for building Java 7 on OS X. That's a total bitch.
-
-Oh, and running it without having to use a very beta version of Java
-for everything on your machine. That's a total bitch, too.
-
-But, you know, we're software developers. We write Solutions For The
-Enterprise<sup>TM</sup>, and Solutions For This Horrible
-Itch In The Middle Of Our Backs and also Solutions To Stop Having to
-Friggin' Do This Goddamn It Is Annoying. So, I wrote this thing.
+So, [Cassandra](http://incubator.apache.org/cassandra/) is pretty
+awesome. If you've found this, you've probably read that Cassandra
+requires Java 7 because of jars it depends on. This is no
+longer true. However, this tool still makes it damn easy to build
+Cassandra against Java 7 and if you want or need it I'd recommend using
+this Rakefile.
 
 It requires nothing more than Ruby, Rake, and MacPorts plus the usual
 gcc/make/ant stuff.
+
+(By they way, if you're having trouble with Cassandra on OS X
+building, it's because your `JAVA_HOME` and `PATH` are still pointing
+to Java 5, even if you have Java 6 Apple update installed on your
+box. Set
+`/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/` as
+your `JAVA_HOME` and add
+`/System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/bin` to
+the front of your `PATH`.)
 
 ### NOTE:
 
@@ -28,6 +25,7 @@ This program is awesome because it handles the `JAVA_HOME` and `PATH`
 stuff for building and running Cassandra without adding Java 7 to them
 permanently. You won't have Java 7 all up in your business after you
 run this.
+
 
 ## Building Cassandra
 
