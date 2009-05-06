@@ -58,7 +58,7 @@ task :jvm do
 end
 
 desc "Setup all dependencies"
-task :setup => [:icedtea, :soylatte, :bsdport, :cassandra_source]
+task :setup => [:soylatte, :icedtea, :bsdport, :cassandra_source]
 
 desc "Checkout or update the Cassandra source code"
 task :cassandra_source => :svn do
