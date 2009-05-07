@@ -62,9 +62,9 @@ task :setup => [:soylatte, :icedtea, :bsdport, :cassandra]
 
 desc "Checkout or update the Cassandra source code"
 task :cassandra => :svn do
-  if File.exist?(here('cassandra'))
+  if File.exist?(here('cassandra/.svn'))
     scm_command = 'svn up'
-  elsif File.exist?(here('cassandra/.svn'))
+  elsif !File.exist?(here('cassandra'))
     sh("svn co https://svn.eu.apache.org/repos/asf/incubator/cassandra/trunk cassandra")
   end
 end
