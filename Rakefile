@@ -58,10 +58,10 @@ task :jvm do
 end
 
 desc "Setup all dependencies"
-task :setup => [:soylatte, :icedtea, :bsdport, :cassandra_source]
+task :setup => [:soylatte, :icedtea, :bsdport, :cassandra]
 
 desc "Checkout or update the Cassandra source code"
-task :cassandra_source => :svn do
+task :cassandra => :svn do
   if File.exist?(here('cassandra'))
     scm_command = 'svn up'
   elsif File.exist?(here('cassandra/.svn'))
