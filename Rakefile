@@ -163,7 +163,7 @@ task :svn do
   end
 end
 
-# desc "Generate code from Cassandra's Thrift file (defaults to ruby)"
+# desc "Generate code from Cassandra's Thrift file"
 task :gen => :thrift do
   sane = {'ruby' => 'rb', 'python' => 'py', 'c++' => 'cpp', 'smalltalk' => 'st'}
   if ENV['GEN'].nil?
