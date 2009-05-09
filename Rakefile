@@ -54,7 +54,9 @@ end
 
 desc "Pass the contents of the 'doit' ENV string to the Java 1.7 runtime"
 task :jvm do
-  jvm_sh ENV['doit'] if ENV['doit']
+  cd Rake.original_dir do
+    jvm_sh ENV['doit'] if ENV['doit']
+  end
 end
 
 desc "Setup all dependencies"
