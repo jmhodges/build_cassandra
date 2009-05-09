@@ -18,32 +18,36 @@ task :default => :start
 
 desc "Start Cassandra server"
 task :start do
-  cd here('cassandra')
-  jvm_sh 'bin/cassandra -f'
+  cd here('cassandra') do
+    jvm_sh 'bin/cassandra -f'
+  end
 end
 
 desc "Start Cassandra command line interface"
 task :cli do
-  cd here('cassandra')
-  jvm_sh 'bin/cassandra-cli'
+  cd here('cassandra') do
+    jvm_sh 'bin/cassandra-cli'
+  end
 end
 
 desc "Compile Cassandra"
 task :compile do
-  cd here('cassandra')
-  jvm_sh("ant")
-  mkdir_p(here('data'))
-  Dir['conf/*'].each do |fn|
-    fr = File.open(fn).read.split("\n")
-    fr.each{|l| l.gsub!(%r{/var/cassandra}, here('data')) }
-    File.open(fn, 'w'){|f| f.write(fr.join("\n"))}
+  cd here('cassandra') do
+    jvm_sh("ant")
+    mkdir_p(here('data'))
+    Dir['conf/*'].each do |fn|
+      fr = File.open(fn).read.split("\n")
+      fr.each{|l| l.gsub!(%r{/var/cassandra}, here('data')) }
+      File.open(fn, 'w'){|f| f.write(fr.join("\n"))}
+    end
   end
 end
 
 desc "Clean current Cassandra build"
 task :clean do
-  cd here('cassandra')
-  jvm_sh("ant clean")
+  cd here('cassandra') do
+    jvm_sh("ant clean")
+  end
 end
 
 task :rebuild => [:clean, :compile]
@@ -117,8 +121,9 @@ task :bsdport => :merc do
 EOS
             )
   end
-  cd here('bsd-port')
-  sh "sh build.sh"
+  cd here('bsd-port') do
+    sh "sh build.sh"
+  end
 end
 
 task :merc do
