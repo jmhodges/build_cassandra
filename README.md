@@ -30,7 +30,7 @@ run this.
 
 Before compiling you'll need to approve of the SoyLatte license. To
 agree to the license (described at the [SoyLatte
-site](http://landonf.bikemonkey.org/static/soylatte/#get)), you will
+site](http://landonf.bikemonkey.org/static/soylatte/#get)), you'll
 need to put `I_AGREE_WITH_THE_SOYLATTE_LICENSE=1` at the beginning
 of the the setup command I show you below.
 
@@ -68,16 +68,16 @@ command line interface with
     rake cli
 
 Why use these instead of straight `./bin/cassandra -f` and so on?
-Because you don't want to edit your `JAVA_HOME` and `PATH` to include this
-beta Java install and those problems are taken care of when using this
-Rakefile.
+Because you don't want to edit your `JAVA_HOME` and `PATH` to include
+this beta Java install and those problems are taken care of when using
+this Rakefile.
 
 ## Bonus round
 
     rake jvm doit="some-java-command"
 
-That runs the command set to `doit` with the `JAVA_HOME` and `PATH` set
-appropriately.
+That runs the command set to `doit` with the `JAVA_HOME` and `PATH`
+set appropriately.
 
     rake clean
 
@@ -85,8 +85,8 @@ This just runs `ant clean` in the Cassandra codebase.
 
     rake clobber
 
-This cleans out the Cassandra build via `ant clean`, and removes the data stuff under
-the `data` directory.
+This cleans out the Cassandra build via `ant clean`, and removes the
+data stuff under the `data` directory.
 
     rake rebuild
 
