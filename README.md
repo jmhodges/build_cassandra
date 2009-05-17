@@ -32,10 +32,10 @@ Before compiling you'll need to approve of the SoyLatte license. To
 agree to the license (described at the [SoyLatte
 site](http://landonf.bikemonkey.org/static/soylatte/#get)), you will
 need to put `I_AGREE_WITH_THE_SOYLATTE_LICENSE=1` at the beginning
-of the the command I've shown you.
+of the the setup command I show you below.
 
-Since you've totally read these docs, you know you need to prepend
-that environment variable to this command:
+Since you've totally read these docs up to this point, you know you
+need to prepend that environment variable to this command:
     
     rake setup compile
 
