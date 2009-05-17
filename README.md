@@ -7,6 +7,15 @@ longer true. However, this tool still makes it damn easy to build
 Cassandra against Java 7 and if you want or need it, I'd recommend using
 this Rakefile.
 
+You see, building Java 7 on OS X is a total bitch. Oh, and running it
+without having to use a very beta version of Java for everything on
+your machine. That's a total bitch, too.
+
+But, you know, we're software developers. We write Solutions For The
+Enterprise<sup>TM</sup>, and Solutions For This Horrible
+Itch In The Middle Of Our Backs and also Solutions To Stop Having to
+Friggin' Do This Goddamn It Is Annoying. So, I wrote this thing.
+
 It requires nothing more than Ruby, Rake, and MacPorts plus the usual
 gcc/make/ant stuff.
 
